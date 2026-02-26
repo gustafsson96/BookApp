@@ -7,3 +7,5 @@
 * AdminPage
 
 ## Components - other
+* Navbar
+* Footer
