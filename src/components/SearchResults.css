@@ -1,0 +1,30 @@
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.book-card {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 220px;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.book-image {
+    width: 100%;
+    height: auto;
+}
+
+.book-info h3 {
+    font-size: 1em;
+    margin: 8px 0 4px;
+}
+
+.book-info p {
+    font-size: 0.9em;
+    color: #555;
+    margin: 0;
+}
