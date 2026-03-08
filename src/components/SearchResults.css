@@ -11,6 +11,13 @@
     width: 220px;
     text-align: center;
     border-radius: 7px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.book-card:hover {
+    background-color: #dddddd50;
 }
 
 .book-image {
