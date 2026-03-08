@@ -1,0 +1,63 @@
+/* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap');
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em 0;
+    background-color: #360914; 
+    color: #fff; 
+    font-family: "Baloo 2", sans-serif;
+    width: 100%;
+    margin: 0;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.3em 0.6em;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+}
+
+nav a:hover {
+    background-color: #0c0c0c71;
+    border-radius: 5px;
+}
+
+nav a:last-child {
+    margin-right: 0.8em;
+}
+
+nav button {
+    font-family: "Baloo 2", sans-serif;
+    background-color: #fdfdfd;
+    color: #000;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-right: 0.8em;
+}
+
+nav button:hover {
+    background-color: #feb0ff73;
+}
+
+span {
+    margin-right: 1em;
+    font-weight: 500;
+}
+
+.active {
+    font-weight: bold;
+}
