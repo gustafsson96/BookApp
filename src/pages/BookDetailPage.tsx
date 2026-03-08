@@ -1,4 +1,4 @@
-import "./BookDetail.css";
+import "./BookDetailPage.css";
 
 function BookDetail() {
     return(
