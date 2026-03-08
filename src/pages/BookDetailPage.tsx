@@ -5,6 +5,7 @@ import type { Book } from "../types/Book";
 import type { Review } from "../types/Review";
 import "./BookDetailPage.css";
 import { getReviewsByBookId } from "../services/reviewService";
+import ReviewForm from "../components/ReviewForm";
 
 function BookDetailPage() {
     // Get book id from the URL
@@ -111,6 +112,15 @@ function BookDetailPage() {
 
             <section className="reviews-section">
                 <h2>Reviews</h2>
+
+                {id && (
+                    <ReviewForm
+                        bookId={id}
+                        onReviewCreated={(newReview) =>
+                            setReviews((prevReviews) => [newReview, ...prevReviews])
+                        }
+                    />
+                )}
 
                 {reviews.length === 0 ? (
                     <p>No reviews yet.</p>

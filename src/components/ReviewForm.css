@@ -1,0 +1,39 @@
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    margin-bottom: 2em;
+}
+
+.review-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font: inherit;
+}
+
+.review-form select,
+.review-form button {
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font: inherit;
+}
+
+.review-form button {
+    cursor: pointer;
+    border: none;
+}
+
+.review-login-message {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+}
+
+.review-error {
+    color: #b00020;
+}
