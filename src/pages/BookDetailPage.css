@@ -70,6 +70,24 @@
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
+.review-card {
+    padding: 1em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-card:last-child {
+    border-bottom: none;
+}
+
+.review-card p {
+    margin: 0.4em 0;
+}
+
+.review-date {
+    font-size: 0.9em;
+    color: #666;
+}
+
 @media (max-width: 768px) {
     .book-detail-card {
         flex-direction: column;
