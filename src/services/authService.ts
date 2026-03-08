@@ -1,6 +1,6 @@
 // Function to handle login (POST request to backend login endpoint)
 export async function login(email: string, password: string) {
-    const response = await fetch("https://localhost:5252/api/auth/login", {
+    const response = await fetch("http://localhost:5252/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ export async function login(email: string, password: string) {
     password: string,
     displayName: string
   ) {
-    const response = await fetch("https://localhost:5252/api/auth/register", {
+    const response = await fetch("http://localhost:5252/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
