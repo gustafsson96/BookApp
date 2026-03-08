@@ -1,10 +1,10 @@
 import "./BookDetailPage.css";
 
-function BookDetail() {
+function BookDetailPage() {
     return(
         <>
         </>
     )
 }
 
-export default BookDetail;
+export default BookDetailPage;
