@@ -1,0 +1,41 @@
+.admin-reviews {
+    margin-top: 2em;
+    padding: 1.5em;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-reviews h2 {
+    margin-bottom: 1em;
+    font-size: 1.6em;
+    color: #222;
+}
+
+.reviews-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.review-item {
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.review-item p {
+    margin: 0.4em 0;
+}
+
+.review-text {
+    line-height: 1.5;
+    color: #333;
+}
+
+.review-date {
+    font-size: 0.9em;
+    color: #777;
+}
