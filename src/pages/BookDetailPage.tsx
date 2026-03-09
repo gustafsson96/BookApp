@@ -127,6 +127,7 @@ function BookDetailPage() {
                 ) : (
                     reviews.map((review) => (
                         <div key={review.id} className="review-card">
+                            <p><strong>{review.displayName}</strong></p>
                             <p><strong>Rating:</strong> {review.rating}/5</p>
                             <p>{review.text}</p>
                             <p className="review-date">
