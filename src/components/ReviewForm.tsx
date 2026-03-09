@@ -124,7 +124,7 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            {ratingError && <p className="review-error">{ratingError}</p>}
+            {ratingError && <p className="field-error">{ratingError}</p>}
 
             <label htmlFor="reviewText">Review</label>
             <textarea
@@ -137,11 +137,11 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
                 }}
                 placeholder="Write your thoughts about this book..."
             />
-            {textError && <p className="review-error">{textError}</p>}
+            {textError && <p className="field-error">{textError}</p>}
 
             <button type="submit">Submit review</button>
 
-            {apiError && <p className="review-error">{apiError}</p>}
+            {apiError && <p className="field-error">{apiError}</p>}
         </form>
     );
 }
