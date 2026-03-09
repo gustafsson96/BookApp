@@ -10,7 +10,7 @@ export const getReviewsByBookId = async (bookId: string): Promise<Review[]> => {
         throw new Error("Failed to fetch reviews.");
     }
 
-    return await response.json();
+    return response.json();
 };
 
 // Fetch logged in user's own reviews
@@ -25,8 +25,8 @@ export const getMyReviews = async (token: string): Promise<Review[]> => {
         throw new Error("Failed to fetch your reviews.");
     }
 
-    return await response.json();
-}
+    return response.json();
+};
 
 // Create a new review
 export const createReview = async (
@@ -52,5 +52,48 @@ export const createReview = async (
         throw new Error("Failed to create review.");
     }
 
-    return await response.json();
+    return response.json();
+};
+
+// Update a review
+export const updateReview = async (
+    id: number,
+    text: string,
+    rating: number,
+    token: string
+): Promise<Review> => {
+    const response = await fetch(`${REVIEW_API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            text,
+            rating
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update review.");
+    }
+
+    return response.json();
+};
+
+// Delete a review
+export const deleteReview = async (
+    id: number,
+    token: string
+): Promise<void> => {
+    const response = await fetch(`${REVIEW_API_URL}/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete review.");
+    }
 };
