@@ -20,8 +20,31 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
     // State for rating
     const [rating, setRating] = useState("");
 
-    // State for error message
-    const [error, setError] = useState<string | null>(null);
+    // States for error messages
+    const [textError, setTextError] = useState("");
+    const [ratingError, setRatingError] = useState("");
+    const [apiError, setApiError] = useState("");
+
+    // Validate each input field
+    const validateForm = () => {
+        let valid = true;
+
+        setTextError("");
+        setRatingError("");
+        setApiError("");
+
+        if (!rating) {
+            setRatingError("Please select a rating");
+            valid = false;
+        }
+
+        if (!text.trim()) {
+            setTextError("Please write a review");
+            valid = false;
+        }
+
+        return valid;
+    };
 
     // Handle form submission
     const handleSubmit = async (e: React.FormEvent) => {
@@ -32,31 +55,39 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
 
         // Stop if user is not logged in or token is missing
         if (!user || !token) {
-            setError("You must be logged in to create a review.");
+            setApiError("You must be logged in to create a review.");
             return;
         }
 
+        const isValid = validateForm();
+        if (!isValid) return;
         try {
-            // Clear previous error
-            setError(null);
-
-            // Create review through backend API
             const newReview = await createReview(
                 bookId,
-                text,
+                text.trim(),
                 Number(rating),
                 token
             );
 
-            // Add new review to parent component
             onReviewCreated(newReview);
 
-            // Clear form fields after successful submission
             setText("");
             setRating("");
-        } catch (err) {
+            setTextError("");
+            setRatingError("");
+            setApiError("");
+        } catch (err: any) {
             console.error(err);
-            setError("Failed to create review.");
+
+            if (err.response?.status === 400) {
+                setApiError("Invalid review data. Please check your input.");
+            } else if (err.response?.status === 401) {
+                setApiError("You must be logged in to create a review.");
+            } else if (err.response?.status >= 500) {
+                setApiError("Server error. Please try again later.");
+            } else {
+                setApiError("Failed to create review.");
+            }
         }
     };
 
@@ -73,15 +104,18 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
     }
 
     return (
-        <form className="review-form" onSubmit={handleSubmit}>
+        <form className="review-form" onSubmit={handleSubmit} noValidate>
             <h3>Write a review</h3>
 
             <label htmlFor="rating">Rating</label>
             <select
                 id="rating"
                 value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                required
+                onChange={(e) => {
+                    setRating(e.target.value);
+                    setRatingError("");
+                    setApiError("");
+                }}
             >
                 <option value="">Select rating</option>
                 <option value="1">1</option>
@@ -90,19 +124,24 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
+            {ratingError && <p className="review-error">{ratingError}</p>}
 
             <label htmlFor="reviewText">Review</label>
             <textarea
                 id="reviewText"
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => {
+                    setText(e.target.value);
+                    setTextError("");
+                    setApiError("");
+                }}
                 placeholder="Write your thoughts about this book..."
-                required
             />
+            {textError && <p className="review-error">{textError}</p>}
 
             <button type="submit">Submit review</button>
 
-            {error && <p className="review-error">{error}</p>}
+            {apiError && <p className="review-error">{apiError}</p>}
         </form>
     );
 }
