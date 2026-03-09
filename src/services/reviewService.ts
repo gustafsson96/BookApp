@@ -49,7 +49,8 @@ export const createReview = async (
     });
 
     if (!response.ok) {
-        throw new Error("Failed to create review.");
+        const errorMessage = await response.text();
+        throw new Error(errorMessage || "Failed to create review.");
     }
 
     return response.json();

@@ -78,16 +78,7 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
             setApiError("");
         } catch (err: any) {
             console.error(err);
-
-            if (err.response?.status === 400) {
-                setApiError("Invalid review data. Please check your input.");
-            } else if (err.response?.status === 401) {
-                setApiError("You must be logged in to create a review.");
-            } else if (err.response?.status >= 500) {
-                setApiError("Server error. Please try again later.");
-            } else {
-                setApiError("Failed to create review.");
-            }
+            setApiError(err.message || "Failed to create review.");
         }
     };
 
