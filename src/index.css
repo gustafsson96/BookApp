@@ -19,3 +19,20 @@ body {
   min-height: 100vh;
 }
 
+/* General error messages */
+.error-message {
+  background-color: #fdecea;
+  border: 1px solid #f5c2c7;
+  color: #b02a37;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  font-size: 0.95em;
+  padding: 1em;
+}
+
+/* Field validation errors */
+.field-error {
+  color: #b51928;
+  font-size: 0.85em;
+  margin-top: 0.15em;
+}
