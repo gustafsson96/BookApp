@@ -14,13 +14,14 @@ function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form className="search-form" onSubmit={handleSubmit}>
                 <input
+                    className="search-input"
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search for a book..." />
-                <button type="submit">Search</button>
+                <button className="search-button" type="submit">Search</button>
             </form>
         </>
     )
