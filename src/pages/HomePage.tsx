@@ -12,6 +12,12 @@ function HomePage() {
 
     // Handle a book search
     const handleSearch = async (query: string) => {
+        // Check if query is empty
+        if (!query.trim()) {
+            setBooks([]);
+            setError("Please enter a search term");
+            return;
+        }
         try {
             // Remove previous errors
             setError(null);
