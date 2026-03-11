@@ -3,10 +3,12 @@ import "./AdminPage.css";
 
 function AdminPage() {
     return(
-        <>
-        <h1>Admin Panel</h1>
-        <AdminReviews />
-        </>
+        <main className="admin-page">
+                <h1>Admin Panel</h1>
+                <p className="admin-subtitle">Manage your reviews here</p>
+
+                <AdminReviews />
+        </main>
     )
 }
 

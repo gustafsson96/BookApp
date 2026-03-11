@@ -1,41 +1,86 @@
 .admin-reviews {
     margin-top: 2em;
-    padding: 1.5em;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
 }
 
 .admin-reviews h2 {
     margin-bottom: 1em;
     font-size: 1.6em;
-    color: #222;
+    color: #6e1f33;
 }
 
 .reviews-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
 }
 
 .review-item {
-    padding: 1em;
-    margin-bottom: 1em;
-    border: 1px solid #ddd;
+    padding: 1.4em;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background: #ffffff;
+    border: 2px solid #f3bfd0;
 }
 
 .review-item p {
     margin: 0.4em 0;
+    color: #6e1f33;
 }
 
 .review-text {
+    margin-top: 0.6em;
     line-height: 1.5;
-    color: #333;
+    color: #7a3448;
 }
 
 .review-date {
+    margin-top: 0.4em;
     font-size: 0.9em;
-    color: #777;
+    color: #a06175;
+}
+
+.review-buttons {
+    display: flex;
+    gap: 0.6em;
+    margin-top: 1em;
+}
+
+.review-buttons button {
+    border: none;
+    background: #8b1e3f;
+    color: white;
+    font-weight: 600;
+    padding: 0.55em 1em;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.review-buttons button:hover {
+    background: #a1254a;
+}
+
+.review-item textarea,
+.review-item input {
+    width: 100%;
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+    padding: 0.7em 0.9em;
+    border: 2px solid #f3bfd0;
+    border-radius: 10px;
+    font: inherit;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.review-item textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.review-item textarea:focus,
+.review-item input:focus {
+    border-color: #d494aa;
 }

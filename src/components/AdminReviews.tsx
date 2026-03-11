@@ -158,7 +158,7 @@ function AdminReviews() {
                                         {review.text}
                                     </p>
 
-                                    <p className="review-date">
+                                    <p className="review-date">Created at:&nbsp;
                                         {new Date(review.createdAt).toLocaleDateString()}
                                     </p>
 
