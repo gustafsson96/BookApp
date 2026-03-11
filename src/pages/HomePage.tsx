@@ -3,6 +3,7 @@ import { searchBooks } from "../services/googleBookService";
 import type { Book } from "../types/Book";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
+import BookList from "../components/BookList";
 import { ClipLoader } from "react-spinners";
 import "./HomePage.css";
 
@@ -59,6 +60,8 @@ function HomePage() {
                     )}
                 </div>
             </section>
+
+            {!hasSearched && !loading && <BookList />}
 
             {hasSearched && !loading && (
                 <section className="results-section">
