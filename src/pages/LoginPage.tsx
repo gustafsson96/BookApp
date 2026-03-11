@@ -2,6 +2,7 @@ import { useState, type SyntheticEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -66,41 +67,48 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {apiError && <p className="error-message">{apiError}</p>}
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setEmailError("");
-              setApiError("");
-            }}
-          />
-          {emailError && <p className="field-error">{emailError}</p>}
-        </div>
+    <div className="login-page">
+      <div className="login-card">
+        <h2>Login</h2>
+        {apiError && <p className="error-message">{apiError}</p>}
+        <form className="login-form" onSubmit={handleSubmit} noValidate>
+          <div className="login-field">
+            <input
+              className="login-input"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError("");
+                setApiError("");
+              }}
+            />
+            {emailError && <p className="field-error">{emailError}</p>}
+          </div>
 
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setPasswordError("");
-              setApiError("");
-            }}
-          />
-          {passwordError && <p className="field-error">{passwordError}</p>}
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? <ClipLoader size={6} /> : "Login"}
-        </button>
-      </form>
+          <div className="login-field">
+            <input
+              className="login-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError("");
+                setApiError("");
+              }}
+            />
+            {passwordError && <p className="field-error">{passwordError}</p>}
+          </div>
+          <button className="login-button" type="submit" disabled={loading}>
+            {loading ? <ClipLoader size={6} /> : "Login"}
+          </button>
+        </form>
+        <p className="signup-link">
+          Don’t have an account? <Link to="/signup">Sign up</Link>
+        </p>
+      </div>
     </div>
   )
 }
