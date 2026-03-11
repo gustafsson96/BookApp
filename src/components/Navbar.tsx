@@ -19,7 +19,6 @@ function Navbar() {
             <div>
                 {user ? (
                 <>
-                    <span>Hello, {user.displayName}!</span>
                     <NavLink to="/admin">Admin</NavLink>
                     <button onClick={handleLogout} style={{ cursor: "pointer" }}>Log Out</button>
                 </>
