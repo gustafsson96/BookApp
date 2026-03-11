@@ -9,6 +9,7 @@ function HomePage() {
     // States for search result and error messages
     const [books, setBooks] = useState<Book[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
 
     // Handle a book search
     const handleSearch = async (query: string) => {
@@ -19,6 +20,8 @@ function HomePage() {
             return;
         }
         try {
+            // Set loading to true
+            setLoading(true);
             // Remove previous errors
             setError(null);
             // Fetch books from API
@@ -29,6 +32,8 @@ function HomePage() {
             // Display error message if fetch call is unsuccessful
             setError("Something went wrong");
             console.error(err);
+        } finally {
+            setLoading(false);
         }
     }
     return (
@@ -38,8 +43,8 @@ function HomePage() {
             <SearchBar onSearch={handleSearch} />
 
             {error && <p>{error}</p>}
-
             <SearchResults books={books} />
+            {loading && <p>Loading...</p>}
         </div>
     );
 };

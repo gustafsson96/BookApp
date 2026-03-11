@@ -11,11 +11,12 @@ function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Error states
+// States for error messages and loading
   const [displayNameError, setDisplayNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [apiError, setApiError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Validate each input field
   const validateForm = () => {
@@ -57,6 +58,7 @@ function SignupPage() {
     if (!isValid) return;
 
     try {
+      setLoading(true);
       await register({
         displayName,
         email,
@@ -75,7 +77,8 @@ function SignupPage() {
       } else {
         setApiError("Registration failed. Please try again.");
       }
-
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -126,6 +129,7 @@ function SignupPage() {
           {passwordError && <p className="field-error">{passwordError}</p>}
         </div>
         <button type="submit">Sign Up</button>
+        {loading && <p>Loading...</p>}
       </form>
     </div>
   );

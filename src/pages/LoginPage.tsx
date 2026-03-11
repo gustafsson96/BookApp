@@ -10,10 +10,11 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // States for error messages
+  // States for error messages and loading
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [apiError, setApiError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Validate each input field
   const validateForm = () => {
@@ -46,6 +47,7 @@ function LoginPage() {
     if (!isValid) return;
 
     try {
+      setLoading(true);
       await login({ email, password });
       // Redirect after successful login
       navigate("/admin");
@@ -57,6 +59,8 @@ function LoginPage() {
       } else {
         setApiError("Login failed. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,6 +97,7 @@ function LoginPage() {
           {passwordError && <p className="field-error">{passwordError}</p>}
         </div>
         <button type="submit">Login</button>
+        {loading && <p>Loading...</p>}
       </form>
     </div>
   )
