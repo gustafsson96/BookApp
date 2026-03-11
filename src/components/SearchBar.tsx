@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { SyntheticEvent } from "react";
 import "./SearchBar.css";
 
 function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
@@ -6,7 +7,7 @@ function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
     const [query, setQuery] = useState("");
 
     // Handle form submission
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSearch(query);
     };
