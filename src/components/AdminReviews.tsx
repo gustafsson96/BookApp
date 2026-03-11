@@ -150,6 +150,7 @@ function AdminReviews() {
                                 </>
                             ) : (
                                 <>
+                                <p><strong>Book:</strong> {review.bookTitle}</p>
                                     <p>
                                         <strong>Rating:</strong> {review.rating}/5
                                     </p>

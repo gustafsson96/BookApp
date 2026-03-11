@@ -37,7 +37,7 @@ function BookDetailPage() {
 
                 const bookResult = await getBookById(id);
                 const reviewResult = await getReviewsByBookId(id);
-                
+
                 setBook(bookResult);
                 setReviews(reviewResult);
             } catch (err) {
@@ -141,6 +141,8 @@ function BookDetailPage() {
                 {id && (
                     <ReviewForm
                         bookId={id}
+                        bookTitle={book.title}
+                        bookImage={book.smallImage || book.largeImage || ""}
                         onReviewCreated={(newReview) =>
                             setReviews((prevReviews) => [newReview, ...prevReviews])
                         }

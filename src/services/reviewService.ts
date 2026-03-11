@@ -31,6 +31,8 @@ export const getMyReviews = async (token: string): Promise<Review[]> => {
 // Create a new review
 export const createReview = async (
     bookId: string,
+    bookTitle: string,
+    bookImage: string | undefined,
     text: string,
     rating: number,
     token: string
@@ -43,6 +45,8 @@ export const createReview = async (
         },
         body: JSON.stringify({
             bookId,
+            bookTitle,
+            bookImage,
             text,
             rating
         })

@@ -7,10 +7,12 @@ import "./ReviewForm.css";
 
 interface ReviewFormProps {
     bookId: string;
+    bookTitle: string;
+    bookImage?: string;
     onReviewCreated: (newReview: Review) => void;
 }
 
-function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
+function ReviewForm({ bookId, bookTitle, bookImage, onReviewCreated }: ReviewFormProps) {
     // Get current logged in user from auth context
     const { user } = useAuth();
 
@@ -64,6 +66,8 @@ function ReviewForm({ bookId, onReviewCreated }: ReviewFormProps) {
         try {
             const newReview = await createReview(
                 bookId,
+                bookTitle,
+                bookImage,
                 text.trim(),
                 Number(rating),
                 token
