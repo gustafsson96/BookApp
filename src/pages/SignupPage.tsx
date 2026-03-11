@@ -1,6 +1,7 @@
 import { useState, type SyntheticEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import "./SignupPage.css";
 
 function SignupPage() {
@@ -11,7 +12,7 @@ function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-// States for error messages and loading
+  // States for error messages and loading
   const [displayNameError, setDisplayNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -128,8 +129,9 @@ function SignupPage() {
           />
           {passwordError && <p className="field-error">{passwordError}</p>}
         </div>
-        <button type="submit">Sign Up</button>
-        {loading && <p>Loading...</p>}
+        <button type="submit" disabled={loading}>
+          {loading ? <ClipLoader size={6} /> : "Signup"}
+        </button>
       </form>
     </div>
   );

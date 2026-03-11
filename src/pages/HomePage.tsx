@@ -3,6 +3,7 @@ import { searchBooks } from "../services/googleBookService";
 import type { Book } from "../types/Book";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
+import { ClipLoader } from "react-spinners";
 import "./HomePage.css";
 
 function HomePage() {
@@ -44,7 +45,7 @@ function HomePage() {
 
             {error && <p>{error}</p>}
             <SearchResults books={books} />
-            {loading && <p>Loading...</p>}
+            {loading && <ClipLoader />}
         </div>
     );
 };

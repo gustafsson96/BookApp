@@ -5,6 +5,7 @@ import type { Book } from "../types/Book";
 import type { Review } from "../types/Review";
 import "./BookDetailPage.css";
 import { getReviewsByBookId } from "../services/reviewService";
+import { ClipLoader } from "react-spinners";
 import ReviewForm from "../components/ReviewForm";
 
 function BookDetailPage() {
@@ -63,6 +64,7 @@ function BookDetailPage() {
             <button className="back-button" onClick={() => navigate(-1)}>
                 ← Back
             </button>
+            {loading && <ClipLoader />}
             <div className="book-detail-card">
                 <div className="book-detail-image">
                     {book.largeImage || book.smallImage ? (

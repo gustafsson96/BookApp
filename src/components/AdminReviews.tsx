@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Review } from "../types/Review";
 import { getMyReviews, updateReview, deleteReview } from "../services/reviewService";
+import { ClipLoader } from "react-spinners";
 import "./AdminReviews.css";
 
 function AdminReviews() {
@@ -110,7 +111,7 @@ function AdminReviews() {
     return (
         <section className="admin-reviews">
             <h2>My Reviews</h2>
-
+            {loading && <ClipLoader />}
             {reviews.length === 0 ? (
                 <p>You haven't written any reviews yet.</p>
             ) : (

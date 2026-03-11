@@ -1,6 +1,7 @@
 import { useState, type SyntheticEvent } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -96,8 +97,9 @@ function LoginPage() {
           />
           {passwordError && <p className="field-error">{passwordError}</p>}
         </div>
-        <button type="submit">Login</button>
-        {loading && <p>Loading...</p>}
+        <button type="submit" disabled={loading}>
+          {loading ? <ClipLoader size={6} /> : "Login"}
+        </button>
       </form>
     </div>
   )
