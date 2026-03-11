@@ -33,13 +33,12 @@ function BookDetailPage() {
             }
             try {
                 setError(null);
+                setLoading(true);
 
-                // Fetch book details by id from Google Books API
                 const bookResult = await getBookById(id);
-                setBook(bookResult);
-
-                // Fetch reviews from backend API
                 const reviewResult = await getReviewsByBookId(id);
+                
+                setBook(bookResult);
                 setReviews(reviewResult);
             } catch (err) {
                 console.error(err);
@@ -53,18 +52,42 @@ function BookDetailPage() {
         fetchBookAndReviews();
     }, [id]);
 
-    // Replace with animation later
-    if (loading) return <p>Loading book details...</p>;
-    if (error) return <p>{error}</p>;
-    if (!book) return <p>Book not found.</p>;
+    if (loading) {
+        return (
+            <div className="book-detail-page state-message">
+                <ClipLoader size={30} />
+                <p>Loading book details...</p>
+            </div>
+        );
+    }
 
+    if (error) {
+        return (
+            <div className="book-detail-page state-message">
+                <p className="page-error">{error}</p>
+                <button className="back-button" onClick={() => navigate(-1)}>
+                    ← Back
+                </button>
+            </div>
+        );
+    }
+
+    if (!book) {
+        return (
+            <div className="book-detail-page state-message">
+                <p>Book not found.</p>
+                <button className="back-button" onClick={() => navigate(-1)}>
+                    ← Back
+                </button>
+            </div>
+        );
+    }
 
     return (
         <div className="book-detail-page">
             <button className="back-button" onClick={() => navigate(-1)}>
                 ← Back
             </button>
-            {loading && <ClipLoader />}
             <div className="book-detail-card">
                 <div className="book-detail-image">
                     {book.largeImage || book.smallImage ? (
