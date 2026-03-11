@@ -11,6 +11,7 @@ function HomePage() {
     const [books, setBooks] = useState<Book[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
 
     // Handle a book search
     const handleSearch = async (query: string) => {
@@ -18,16 +19,16 @@ function HomePage() {
         if (!query.trim()) {
             setBooks([]);
             setError("Please enter a search term");
+            setHasSearched(false);
             return;
         }
         try {
-            // Set loading to true
             setLoading(true);
-            // Remove previous errors
             setError(null);
-            // Fetch books from API
+            setHasSearched(true);
+
+            // Fetch books and save results in state
             const results = await searchBooks(query);
-            // Save results in state
             setBooks(results);
         } catch (err) {
             // Display error message if fetch call is unsuccessful
@@ -38,15 +39,37 @@ function HomePage() {
         }
     }
     return (
-        <div>
-            <h1>Search Books</h1>
+        <main className="home-page">
+            <section className="hero-section">
+                <div className="hero-content">
+                    <h1>Welcome to Book Club</h1>
+                    <p className="hero-subtitle">
+                        Find your next favorite book and read what other people think.
+                    </p>
+                    <div className="searchbar-wrapper">
+                        <SearchBar onSearch={handleSearch} />
+                    </div>
 
-            <SearchBar onSearch={handleSearch} />
+                    {error && <p className="error">{error}</p>}
 
-            {error && <p>{error}</p>}
-            <SearchResults books={books} />
-            {loading && <ClipLoader />}
-        </div>
+                    {loading && (
+                        <div className="loader-wrapper">
+                            <ClipLoader size={35} />
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            {hasSearched && !loading && (
+                <section className="results-section">
+                    <p className="results-count">
+                        Search results: <strong>{books.length}</strong> {books.length === 1 ? "book" : "books"}
+                    </p>
+
+                    <SearchResults books={books} />
+                </section>
+            )}
+        </main>
     );
 };
 
