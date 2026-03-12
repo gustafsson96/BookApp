@@ -155,7 +155,7 @@ function BookDetailPage() {
                     reviews.map((review) => (
                         <div key={review.id} className="review-card">
                             <p><strong>{review.displayName}</strong></p>
-                            <p><strong>Rating:</strong> {review.rating}/5</p>
+                            <p><strong>Rating:</strong> {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}</p>
                             <p>{review.text}</p>
                             <p className="review-date">
                                 {new Date(review.createdAt).toLocaleDateString()}
