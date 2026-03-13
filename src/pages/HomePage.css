@@ -21,12 +21,18 @@
     width: 100%;
     margin: 0 auto;
     background: rgba(255, 248, 251, 0.95);
-    padding: 4em 0;
+    padding: 5em 0;
     font-family: "Baloo 2", sans-serif;
+    background:
+        linear-gradient(rgba(255, 248, 251, 0.9), rgba(255, 248, 251, 0.9)),
+        url("../assets/hero-img.webp");
+    background-size: cover;
+    background-position: center;
+    border-radius: 999px;
 }
 
 .hero-content h1 {
-    font-size: 3em;
+    font-size: 3.2em;
     line-height: 1.1;
     color: #7d2039;
     font-weight: 700;
@@ -36,7 +42,7 @@
 .hero-subtitle {
     margin: 0 auto 2em;
     max-width: 600px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 600;
     color: #93445b;
 }
