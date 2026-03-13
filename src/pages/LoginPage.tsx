@@ -69,7 +69,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h2>Login</h2>
+        <h1>Login</h1>
         {apiError && <p className="error-message">{apiError}</p>}
         <form className="login-form" onSubmit={handleSubmit} noValidate>
           <div className="login-field">

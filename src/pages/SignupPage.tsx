@@ -87,7 +87,7 @@ function SignupPage() {
   return (
     <div className="signup-page">
       <div className="signup-card">
-        <h2>Sign Up</h2>
+        <h1>Sign Up</h1>
 
         {apiError && <p className="error-message">{apiError}</p>}
 
