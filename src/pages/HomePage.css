@@ -21,14 +21,13 @@
     width: 100%;
     margin: 0 auto;
     background: rgba(255, 248, 251, 0.95);
-    padding: 5em 0;
+    padding: 6em 0;
     font-family: "Baloo 2", sans-serif;
     background:
         linear-gradient(rgba(255, 248, 251, 0.9), rgba(255, 248, 251, 0.9)),
         url("../assets/hero-img.webp");
     background-size: cover;
     background-position: center;
-    border-radius: 999px;
 }
 
 .hero-content h1 {
