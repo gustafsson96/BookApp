@@ -7,6 +7,7 @@ import "./BookDetailPage.css";
 import { getReviewsByBookId } from "../services/reviewService";
 import { ClipLoader } from "react-spinners";
 import ReviewForm from "../components/ReviewForm";
+import placeholderImage from "../assets/placeholder-book.webp";
 
 function BookDetailPage() {
     // Get book id from the URL
@@ -90,14 +91,14 @@ function BookDetailPage() {
             </button>
             <div className="book-detail-card">
                 <div className="book-detail-image">
-                    {book.largeImage || book.smallImage ? (
-                        <img
-                            src={book.largeImage || book.smallImage}
-                            alt={book.title}
-                        />
-                    ) : (
-                        <div className="no-image">No image available</div>
-                    )}
+                    <img
+                        src={book.smallImage || placeholderImage}
+                        alt={book.title}
+                        onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = placeholderImage;
+                        }}
+                    />
                 </div>
 
                 <div className="book-detail-info">
