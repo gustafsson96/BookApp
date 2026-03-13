@@ -14,8 +14,12 @@ function HomePage() {
     const [loading, setLoading] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
 
+    // State for search query
+    const [searchQuery, setSearchQuery] = useState("");
+
     // Handle a book search
     const handleSearch = async (query: string) => {
+        setSearchQuery(query);
         // Check if query is empty
         if (!query.trim()) {
             setBooks([]);
@@ -50,26 +54,36 @@ function HomePage() {
                     <div className="searchbar-wrapper">
                         <SearchBar onSearch={handleSearch} />
                     </div>
-
                     {error && <p className="error">{error}</p>}
-
-                    {loading && (
-                        <div className="loader-wrapper">
-                            <ClipLoader size={35} />
-                        </div>
-                    )}
                 </div>
             </section>
+
+            {loading && (
+                <div className="loader-wrapper">
+                    <ClipLoader size={35} />
+                </div>
+            )}
 
             {!hasSearched && !loading && <BookList />}
 
             {hasSearched && !loading && (
                 <section className="results-section">
+
+                    {books.length === 0 ? (
+                        <p className="no-results">
+                            No books found for {searchQuery}
+                        </p>
+                    ) : (
+                        <>
+
                     <p className="results-count">
-                        Search results: <strong>{books.length}</strong> {books.length === 1 ? "book" : "books"}
+                        <strong>Search result:</strong> {books.length} {books.length === 1 ? "book" : "books"} found for "{searchQuery}"
                     </p>
 
                     <SearchResults books={books} />
+                    
+                    </>
+                    )}
                 </section>
             )}
         </main>
