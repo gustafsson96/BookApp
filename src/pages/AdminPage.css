@@ -1,16 +1,20 @@
 .admin-page {
     min-height: 100vh;
     padding: 3em 2em;
-    background: linear-gradient(180deg, #ffd9e8 0%, #ffeaf2 50%, #fff7fb 100%);
+    background: #f5f7fa;
+    color: #1f2937;
 }
 
 .admin-page h1 {
-    color: #6e1f33;
     font-size: 2.4em;
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    margin: 0 0 0.3em;
+    color: #1f2937;
 }
 
 .admin-subtitle {
     margin-bottom: 1.5em;
-    color: #8a4a5d;
+    color: #6b7280;
     font-size: 1em;
 }
