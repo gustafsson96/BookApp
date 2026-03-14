@@ -11,6 +11,7 @@
     font-weight: 500;
 }
 
+
 .reviews-list {
     list-style: none;
     padding: 0;
@@ -26,6 +27,24 @@
     background: #ffffff;
     border: 1px solid #e5e7eb;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.review-layout {
+    display: flex;
+    gap: 1.2em;
+    align-items: flex-start;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-book-image {
+    width: 120px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.6em;
 }
 
 .review-item p {
@@ -90,4 +109,17 @@
 .review-item input:focus {
     border-color: #4b5563;
     box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.12);
+}
+
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .review-layout {
+        flex-direction: column;
+    }
+
+    .review-book-image {
+        width: 70px;
+        height: 105px;
+    }
 }

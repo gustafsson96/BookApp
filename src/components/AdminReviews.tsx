@@ -17,6 +17,10 @@ function AdminReviews() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
+    // Get book image by book id
+    const getBookImage = (bookId: string) =>
+        `https://books.google.com/books/content?id=${bookId}&printsec=frontcover&img=1&zoom=1`;
+
     // Fetch when component loads
     useEffect(() => {
         const fetchReviews = async () => {
@@ -111,14 +115,19 @@ function AdminReviews() {
     return (
         <section className="admin-reviews">
             <h2>My Reviews</h2>
-            {loading && <ClipLoader />}
-            {reviews.length === 0 ? (
+
+            {loading ? (
+                <div className="book-list-state">
+                    <ClipLoader size={35} />
+                </div>
+            ) : error ? (
+                <p>{error}</p>
+            ) : reviews.length === 0 ? (
                 <p>You haven't written any reviews yet.</p>
             ) : (
                 <ul className="reviews-list">
                     {reviews.map((review) => (
                         <li key={review.id} className="review-item">
-
                             {editingId === review.id ? (
                                 <>
                                     <label htmlFor={`rating-${review.id}`}>Rating</label>
@@ -148,29 +157,40 @@ function AdminReviews() {
                                     </div>
                                 </>
                             ) : (
-                                <>
-                                <p><strong>Book:</strong> {review.bookTitle}</p>
-                                    <p>
-                                        <strong>Rating:</strong> {review.rating}/5
-                                    </p>
+                                <div className="review-layout">
+                                    {review.bookId && (
+                                        <img
+                                            src={getBookImage(review.bookId)}
+                                            alt={review.bookTitle}
+                                            className="review-book-image"
+                                        />
+                                    )}
 
-                                    <p className="review-text">
-                                        {review.text}
-                                    </p>
+                                    <div className="review-content">
+                                        <p><strong>Book:</strong> {review.bookTitle}</p>
 
-                                    <p className="review-date">Created at:&nbsp;
-                                        {new Date(review.createdAt).toLocaleDateString()}
-                                    </p>
+                                        <p>
+                                            <strong>Rating:</strong> {review.rating}/5
+                                        </p>
 
-                                    <div className="review-buttons">
-                                        <button onClick={() => handleEditClick(review)}>
-                                            Edit
-                                        </button>
-                                        <button onClick={() => handleDelete(review.id)}>
-                                            Delete
-                                        </button>
+                                        <p className="review-text">
+                                            {review.text}
+                                        </p>
+
+                                        <p className="review-date">
+                                            Created at: {new Date(review.createdAt).toLocaleDateString()}
+                                        </p>
+
+                                        <div className="review-buttons">
+                                            <button onClick={() => handleEditClick(review)}>
+                                                Edit
+                                            </button>
+                                            <button onClick={() => handleDelete(review.id)}>
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
-                                </>
+                                </div>
                             )}
                         </li>
                     ))}
