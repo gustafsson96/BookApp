@@ -118,7 +118,6 @@ function AdminReviews() {
                 <ul className="reviews-list">
                     {reviews.map((review) => (
                         <li key={review.id} className="review-item">
-                            <p><strong>Book ID:</strong> {review.bookId}</p>
 
                             {editingId === review.id ? (
                                 <>

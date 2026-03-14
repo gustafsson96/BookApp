@@ -3,12 +3,13 @@
 }
 
 .book-list h2 {
+    font-family: "Bree Serif", serif;
+    font-size: 1.8em;
+    font-weight: 400;
     max-width: 1000px;
     margin: 0 auto 1em;
     padding: 0 1em;
-    color: #6e1f33;
-    font-family: "Baloo 2", sans-serif;
-    font-size: 1.8em;
+    color: #1f2937;
 }
 
 .book-list-grid {
@@ -25,14 +26,15 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #6e1f33;
+    color: #1f2937;
     background: #fff;
     border-radius: 6px;
     padding: 0.8em;
 }
 
 .book-list-card:hover {
-    background-color: rgba(247, 247, 247, 0.923);
+    background-color: #f9fafb;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
 .book-list-image {
@@ -55,7 +57,7 @@
 
 .book-list-info p {
     font-size: 0.85em;
-    color: #93445b;
+    color: #6b7280;
     margin: 0;
 }
 

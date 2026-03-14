@@ -1,49 +1,47 @@
-/* Styling for HomePage component */
-
-/* General home page styling */
+/* Home page styling */
 .home-page {
     min-height: 100vh;
-    background: linear-gradient(180deg, #ffd9e8 0%, #ffeaf2 50%, #fff7fb 100%);
-    color: #6e1f33;
-    padding: 0;
+    background: #f5f7fa;
+    color: #1f2937;
     margin: 0;
+    padding: 0 0 8em 0;
+    font-family: Arial, sans-serif;
 }
 
 /* Hero section */
 .hero-section {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 3em 0 2em;
+    padding: 2.5em 1.5em 1.5em;
     text-align: center;
 }
 
 .hero-content {
     width: 100%;
+    max-width: 900px;
     margin: 0 auto;
-    background: rgba(255, 248, 251, 0.95);
-    padding: 6em 0;
-    font-family: "Baloo 2", sans-serif;
-    background:
-        linear-gradient(rgba(255, 248, 251, 0.9), rgba(255, 248, 251, 0.9)),
-        url("../assets/hero-img.webp");
-    background-size: cover;
-    background-position: center;
+    background: #ffffff;
+    padding: 4em 0;
+    border-radius: 12px;
+    border: 1px solid #dbe3ea;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .hero-content h1 {
-    font-size: 3.2em;
+    font-family: "DM Serif Display", serif;
+    font-size: 3em;
     line-height: 1.1;
-    color: #7d2039;
-    font-weight: 700;
-    margin-bottom: 0.2em;
+    color: #1e3a5f;
+    font-weight: 600;
+    margin-bottom: 0.4em;
 }
 
 .hero-subtitle {
     margin: 0 auto 2em;
     max-width: 600px;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #93445b;
+    font-size: 1.05em;
+    color: #4b5563;
+    line-height: 1.6;
 }
 
 /* Wrapper for search bar */
@@ -56,7 +54,7 @@
 .loader-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 1.2em;
+    margin-top: 1.5em;
 }
 
 /* Error message */
@@ -64,39 +62,54 @@
     margin-top: 1em;
     font-size: 0.95em;
     font-weight: 600;
-    color: #a61f48;
+    color: #b42318;
 }
 
 /* Section for search results */
 .results-section {
     max-width: 1100px;
-    margin: 1em auto;
+    margin: 1.5em auto;
+    padding: 0 1.5em 2em;
 }
 
 .results-count {
-    margin: 0 0 2em 2em;
-    padding-left: 0.2em;
+    margin: 0 0 1.5em;
     font-size: 1em;
-    color: #7d2039;
+    color: #374151;
 }
 
 .results-count strong {
-    color: #5f1429;
+    color: #1e3a5f;
+}
+
+.no-results {
+    background: #ffffff;
+    border: 1px solid #dbe3ea;
+    border-radius: 10px;
+    padding: 1.2em;
+    color: #374151;
 }
 
 /* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
+    .hero-section {
+        padding: 1.5em 1em 1em;
+    }
 
     .hero-content {
-        padding: 2em 0;
+        padding: 2.5em 0;
+        border-radius: 0;
     }
 
     .hero-content h1 {
-        font-size: 2.5em;
+        font-size: 2.1em;
     }
 
     .hero-subtitle {
         font-size: 0.95em;
     }
 
+    .results-section {
+        padding: 0 1em 2em;
+    }
 }
