@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { User, AuthContextType, LoginCredentials } from "../types/Auth";
 import { login as loginService, register as registerService } from "../services/authService"
@@ -14,6 +14,13 @@ interface AuthProviderProps {
 // Provider for authentication
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      setUser({ displayName: "User" }); 
+    }
+  }, []);
 
   // Log in a user
   const login = async (credentials: LoginCredentials) => {
