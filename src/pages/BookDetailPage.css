@@ -23,10 +23,11 @@
     margin-bottom: 1em;
     padding: 0.6em 1.1em;
     border: none;
-    background-color: #8b1e3f;
+    background-color: #1f2937;
     color: white;
     border-radius: 999px;
     cursor: pointer;
+    font-size: 0.9em;
 }
 
 .back-button:hover {
