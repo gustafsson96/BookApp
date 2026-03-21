@@ -68,3 +68,19 @@ span {
 .active {
     text-decoration: underline;
 }
+
+.logout-message-container {
+    text-align: center;
+    background-color: transparent;
+}
+
+.logout-message {
+    display: inline-block;
+    margin: 10px auto;
+    padding: 6px 12px;
+    background-color: #e6f4ea;
+    color: #1b5e20;  
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+  }

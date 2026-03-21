@@ -1,13 +1,20 @@
 import { useAuth } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import logo from "../assets/logotype.png";
 import "./Navbar.css";
 
 function Navbar() {
     const { user, logout } = useAuth();
 
+    const [message, setMessage] = useState("");
+
     const handleLogout = () => {
         logout();
+        setMessage("You have been logged out");
+        setTimeout(() => {
+            setMessage("");
+        }, 3000);
     };
 
     return (
@@ -33,6 +40,9 @@ function Navbar() {
                     )}
                 </div>
             </nav>
+            <div className="logout-message-container">
+                {message && <p className="logout-message">{message}</p>}
+            </div>
         </>
     )
 }
