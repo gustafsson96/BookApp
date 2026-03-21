@@ -1,4 +1,4 @@
-# Book Club (Projekt DT210G)
+# Book Club (projekt DT210G)
 Book Club är en applikation där användare kan söka efter böcker och läsa detaljerad bokinformation tillsammans med skapade recensioner. En registrerad användare kan skapa och hantera sina egna recensioner. Applikationen består av två delar: en frontend-lösning skapad med Vite, React och TypeScript och en backend-lösning skapad som ett ASP.NET Core Web API med ASP.NET Core Identity för registrering och inloggning. För att samla all information på ett ställe innehåller denna README-fil information om den fullständiga lösningen (frontend och backend). 
 
 ## Arkitektur
