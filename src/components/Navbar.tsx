@@ -1,5 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logotype.png";
 import "./Navbar.css";
 
 function Navbar() {
@@ -7,29 +8,31 @@ function Navbar() {
 
     const handleLogout = () => {
         logout();
-      };
-    
-    return(
+    };
+
+    return (
         <>
             <nav>
-            <div>
-                <NavLink to="/">Home</NavLink>
-            </div>
+                <div>
+                    <NavLink to="/">
+                        <img src={logo} alt="Book Club logo" />
+                    </NavLink>
+                </div>
 
-            <div>
-                {user ? (
-                <>
-                    <NavLink to="/admin">Admin</NavLink>
-                    <button onClick={handleLogout} style={{ cursor: "pointer" }}>Log Out</button>
-                </>
-                ) : (
-                <>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/signup">Sign Up</NavLink>
-                </>
-                )}
-            </div>
-        </nav>
+                <div>
+                    {user ? (
+                        <>
+                            <NavLink to="/admin">Admin</NavLink>
+                            <button onClick={handleLogout} style={{ cursor: "pointer" }}>Log Out</button>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink to="/login">Login</NavLink>
+                            <NavLink to="/signup">Sign Up</NavLink>
+                        </>
+                    )}
+                </div>
+            </nav>
         </>
     )
 }
