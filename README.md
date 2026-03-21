@@ -7,11 +7,11 @@ Applikationen är uppbyggd enligt en klassisk fullstack-struktur. Frontend-lösn
 Följande komponenter har skapats: 
 
 ### Sidkomponenter
-* **HomePage:** Applikationens startsida med boklista, sökbar och sökresultat. 
+* **HomePage:** Applikationens startsida som läser ut boklista, sökbar och sökresultat. 
 * **BookDetailPage:** En sida för en enskild bok.
 * **LoginPage:** Inloggningsformulär. 
 * **SignupPage:** Registreringsformulär. 
-* **AdminPage (protected):** Sida där en inloggad användare kan se och hantera sina recensioner. 
+* **AdminPage (skyddad vy):** Sida där en inloggad användare kan se och hantera sina recensioner. 
 * **LayoutPage:** Generell sidstruktur som visar navbar och footer på samtliga sidor. 
 
 ### Andra komponenter
@@ -20,7 +20,7 @@ Följande komponenter har skapats:
 * **SearchBar:** Sökbar för att söka efter böcker. 
 * **SearchResults:** Sökresultaten som presenteras. 
 * **BookList:** En lista med böcker som presenteras på startsidan innan en sökning genomförts. 
-* **AdminReviews:** En inloggad användares reviews. 
+* **AdminReviews:** En inloggad användares recensioner. 
 * **ReviewForm:** Formulär för att skapa en ny recension. 
 
 Backendlösningen är skapad som ett ASP.NET Core Web API och är strukturerat i modeller, controllers och Data Transfer Objects (DTOs) som används för att kontrollera data som skickas mellan backend och frontend. Den innehåller även en ApplicationDbContext-fil som kopplar applikationen till databasen via Entity Framework Core. 
@@ -31,20 +31,22 @@ Applikationen erbjuder följande funktioner:
 * Visa detaljerad information om böcker på individuella sidor. 
 * Registrera konto och logga in. 
 * Skapa recensioner med text och betyg 1-5. 
-* Uppdatera och ta bort egna recensioner. 
+* Uppdatera och ta bort egna recensioner.
+* Feedback-meddelanden vid felaktigt inmatade fält i formulären.
 
 ## Teknologier använda
-Frontend:
+### Frontend
 * **React:** Strukturerar användargränssnittet med komponenter. 
 * **TypeScript:** Används för att skriva kod med typkontroll. 
 * **React Router:** För att hantera navigering. 
 * **Context API:** Används för att hantera inloggad användare utan att behöva skicka data genom flera komponenter. 
 * **CSS:** Styling. 
-Backend: 
+
+### Backend
 * **ASP.NET Core Web API:** Valt ramvekt för att bygga ett API i .NET.
 * **Entity Framework Core:** Ett ORM-verktyg för att kommunicera med databasen. 
 * **ASP.NET Identity:** För autentisering och användarhantering. 
 * **JWT (JSON Web Tokens):** Autentiserar användare genom att ett token skickas med i API-anrop.
 * **SQLite:** Vald databas som lagrar data lokalt i en fil. 
-Övrigt: 
+### Övrigt
 * **Google Books API:** Valt externt API som används för att hämta bokdata. 
